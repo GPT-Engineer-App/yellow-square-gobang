@@ -12,8 +12,8 @@ const GomokuBoard = () => {
   const [currentPlayer, setCurrentPlayer] = useState(PLAYER_ONE);
   const [winner, setWinner] = useState(null);
 
-  const handleClick = (row, col) => {
-    if (board[row][col] !== EMPTY || winner) return;
+  const handleClick = (row, col, event) => {
+    if (event.button !== 0 || board[row][col] !== EMPTY || winner) return;
 
     const newBoard = board.map((r, rowIndex) =>
       r.map((cell, colIndex) => (rowIndex === row && colIndex === col ? currentPlayer : cell))
@@ -75,7 +75,7 @@ const GomokuBoard = () => {
             <div
               key={`${rowIndex}-${colIndex}`}
               className="w-10 h-10 border border-black flex items-center justify-center"
-              onClick={() => handleClick(rowIndex, colIndex)}
+              onMouseDown={(event) => handleClick(rowIndex, colIndex, event)}
             >
               {cell && <div className={`w-8 h-8 rounded-full bg-${cell}`} />}
             </div>
