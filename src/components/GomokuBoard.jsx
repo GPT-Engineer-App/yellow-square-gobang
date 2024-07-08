@@ -8,7 +8,7 @@ const PLAYER_ONE = "red";
 const PLAYER_TWO = "blue";
 
 const GomokuBoard = () => {
-  const [board, setBoard] = useState(Array(BOARD_SIZE).fill(Array(BOARD_SIZE).fill(EMPTY)));
+  const [board, setBoard] = useState(Array.from({ length: BOARD_SIZE }, () => Array(BOARD_SIZE).fill(EMPTY)));
   const [currentPlayer, setCurrentPlayer] = useState(PLAYER_ONE);
   const [winner, setWinner] = useState(null);
 
@@ -60,7 +60,7 @@ const GomokuBoard = () => {
   };
 
   const resetGame = () => {
-    setBoard(Array(BOARD_SIZE).fill(Array(BOARD_SIZE).fill(EMPTY)));
+    setBoard(Array.from({ length: BOARD_SIZE }, () => Array(BOARD_SIZE).fill(EMPTY)));
     setCurrentPlayer(PLAYER_ONE);
     setWinner(null);
   };
